@@ -142,7 +142,7 @@ public class ATM {
         } else if (this.quantity50 < 2) {
             return true;
         } else {
-            return (double) this.quantity20 * 3.8 > (double) quantity50;
+            return (double) this.quantity20 * 4.0 > (double) quantity50;
         }
     }
 
