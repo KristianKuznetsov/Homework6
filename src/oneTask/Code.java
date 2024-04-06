@@ -1,3 +1,5 @@
+package oneTask;
+
 import java.util.Random;
 
 public class Code {

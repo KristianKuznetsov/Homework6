@@ -1,3 +1,7 @@
+package oneTask;
+
+import oneTask.Code;
+
 public class CreditCard {
 
     private final String accountCode;    //номер счета
