@@ -1,4 +1,6 @@
 import oneTask.CreditCard;
+import star.ATM;
+import star.ATMValueGenerator;
 
 import java.util.Random;
 
@@ -14,6 +16,8 @@ public class SolutionBuilder {
 //        третьей. Выведите на экран текущее состояние всех трех карточек
 
     public static void task1() {
+        System.out.println("Задача 1: \n");
+
         Random random = new Random();
 
         CreditCard[] cards = new CreditCard[3];
@@ -33,6 +37,7 @@ public class SolutionBuilder {
         System.out.println("Новое состояние:");
         cardDisplay(cards);
 
+        System.out.println("\n\n\n");
 
     }
 
@@ -81,7 +86,29 @@ public class SolutionBuilder {
 //        количеством купюр каждого номинала.
 
     public static void taskStar() {
-        //amount
+        System.out.println("Задача *:\n");
+
+        double[] weight = {0.4, 0.4, 0.2};
+        ATM atm = ATMValueGenerator.generateATM(weight, 100, 200);
+        atm.atmInfo();
+
+        int[] addMoney = ATMValueGenerator.generateMoney(weight, 15, 30);
+        System.out.println("Добовляем в банкомат следующие купюры:");
+        System.out.println("Номинал 20:  " + addMoney[0]);
+        System.out.println("Номинал 50:  " + addMoney[1]);
+        System.out.println("Номинал 100: " + addMoney[2]);
+        atm.uploadMoney(addMoney[0], addMoney[1], addMoney[2]);
+        atm.atmInfo();
+
+        for (int i = 0; i < 10; i++) {
+            int amount = ATMValueGenerator.getSum(200, 500);
+            System.out.println("Пользователь снимает: " + amount + " ...");
+
+            if (!atm.withdrawalMoney(amount)) {
+                System.out.println("Ошибка не удалось снять: " + amount + "\n\n");
+            }
+        }
+
     }
 
 }
